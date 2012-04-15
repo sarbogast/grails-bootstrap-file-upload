@@ -96,7 +96,16 @@ class BootstrapFileUploadTagLib {
                         acceptFileTypes: ${acceptFileTypes},
                         resizeMaxWidth: ${resizeMaxWidth},
                         resizeMaxHeight: ${resizeMaxHeight}
-                     });
+                    });
+
+                    \$('#${id}').each(function () {
+                        var that = this;
+                        \$.getJSON(this.action, ${params ? '{' + params.collect{k,v->k+':'+v}.join(',') + '}' : '{}'} ,function (result) {
+                            if (result && result.length) {
+                                \$(that).fileupload('option', 'done').call(that, null, {result: result});
+                            }
+                        });
+                    });
                  });
             """
         }
