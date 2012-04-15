@@ -1,6 +1,6 @@
 modules = {
     'bootstrap-image-gallery' {
-        dependsOn 'bootstrap'
+        dependsOn 'bootstrap', 'blueimp-load-image'
 
         resource url: '/css/bootstrap-image-gallery.css'
 
