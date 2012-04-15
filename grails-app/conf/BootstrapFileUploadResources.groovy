@@ -28,8 +28,5 @@ modules = {
         resource url: '/js/jquery.fileupload.js'
         resource url: '/js/jquery.fileupload-ip.js'
         resource url: '/js/jquery.fileupload-ui.js'
-        resource url: '/js/locale.js'
-        resource url: '/js/main.js'
-        resource url: '/js/cors/jquery.xdr-transport.js'
     }
 }
