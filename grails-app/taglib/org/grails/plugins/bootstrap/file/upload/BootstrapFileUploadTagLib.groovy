@@ -14,6 +14,8 @@ class BootstrapFileUploadTagLib {
      * @attr acceptFileTypes regular expression for accepted file type (defaults to /(\.|\/)(gif|jpe?g|png)$/i)
      * @attr resizeMaxWidth maximum width images will be resized to in supporting browsers (defaults to 1920)
      * @attr resizeMaxHeight maximum height images will be resized to in supporting browsers (defaults to 1200)
+     * @attr params map containing parameters that will be sent to the controller on upload (defaults to [:])
+     * @attr allowDelete boolean indicating whether delete is allowed (defaults to true)
      */
     def fileUpload = { attrs, body ->
         def id = attrs.id ?: 'fileupload'
@@ -21,9 +23,22 @@ class BootstrapFileUploadTagLib {
         def acceptFileTypes = attrs.acceptFileTypes ?: "/(\\.|\\/)(gif|jpe?g|png)\$/i"
         def resizeMaxWidth = attrs.resizeMaxWidth ?: 1920
         def resizeMaxHeight = attrs.resizeMaxHeight ?: 1200
+        def params = attrs.params ?: [:]
+        def allowDelete
+        if (!attrs.allowDelete){
+            allowDelete = true
+        } else {
+            allowDelete = (attrs.allowDelete == true)
+        }
 
         out << """
-        <form id="${id}" action="${createLink(controller: attrs.controller, action: attrs.action)}" method="POST" enctype="multipart/form-data">
+        <form id="${id}" action="${createLink(controller: attrs.controller, action: attrs.action)}" method="POST" enctype="multipart/form-data">"""
+
+        params.each { key, value ->
+            out << hiddenField(name: key, value: value)
+        }
+
+        out << """
             <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
             <div class="row fileupload-buttonbar">
             <div class="span7">
@@ -41,19 +56,26 @@ class BootstrapFileUploadTagLib {
             <i class="icon-ban-circle icon-white"></i>
               <span>${message(code:'fileupload.cancel.upload', default: 'Cancel upload')}</span>
             </button>
-            <button type="button" class="btn btn-danger delete">
-              <i class="icon-trash icon-white"></i>
-            <span>${message(code:'fileupload.delete', default:'Delete')}</span>
-            </button>
-            <input id="${id}-toggle" type="checkbox" class="toggle">
-            <label for="${id}-toggle">${message(code: 'fileupload.select.all', default: 'Select all')}</label>
+            """
+
+        if (allowDelete) {
+            out << """
+                <button type="button" class="btn btn-danger delete">
+                  <i class="icon-trash icon-white"></i>
+                <span>${message(code:'fileupload.delete', default:'Delete')}</span>
+                </button>
+                """
+        }
+
+        out << """
+            <input id="${id}-toggle" type="checkbox" class="toggle">&nbsp;<label style="display:inline" for="${id}-toggle">${message(code: 'fileupload.select.all', default: 'Select all')}</label>
             </div>
-          <div class="span5">
-            <!-- The global progress bar -->
-            <div class="progress progress-success progress-striped active fade">
-              <div class="bar" style="width:0%;"></div>
+            <div class="span2">
+                <!-- The global progress bar -->
+                <div class="progress progress-success progress-striped active fade">
+                  <div class="bar" style="width:0%;"></div>
+                </div>
             </div>
-          </div>
             </div>
         <!-- The loading indicator is shown during image processing -->
         <div class="fileupload-loading"></div>
@@ -101,7 +123,9 @@ class BootstrapFileUploadTagLib {
         ${message(code: 'fileupload.errors.uploadedBytes')}
         {% } else if(file.error == 'emptyResult') { %}
         ${message(code: 'fileupload.errors.emptyResult')}
-        {% } else { file.error } %}
+        {% } else { %}
+        {%=file.error%}
+        {% } %}
         </td>
     {% } else if (o.files.valid && !i) { %}
     <td>
@@ -146,7 +170,9 @@ class BootstrapFileUploadTagLib {
         ${message(code: 'fileupload.errors.uploadedBytes')}
         {% } else if(file.error == 'emptyResult') { %}
         ${message(code: 'fileupload.errors.emptyResult')}
-        {% } else { file.error } %}
+        {% } else { %}
+        {%=file.error%}
+        {% } %}
     </td>
     {% } else { %}
     <td class="preview">{% if (file.thumbnail_url) { %}
@@ -157,14 +183,20 @@ class BootstrapFileUploadTagLib {
     </td>
     <td class="size"><span>{%=o.formatFileSize(file.size)%}</span></td>
     <td colspan="2"></td>
-    {% } %}
-    <td class="delete">
-      <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
-        <i class="icon-trash icon-white"></i>
-        <span>${message(code:'fileupload.destroy')}</span>
-      </button>
-      <input type="checkbox" name="delete" value="1">
-    </td>
+    {% } %}"""
+
+        if (allowDelete) {
+            out << """
+        <td class="delete">
+          <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
+            <i class="icon-trash icon-white"></i>
+            <span>${message(code:'fileupload.destroy')}</span>
+          </button>
+          <input type="checkbox" name="delete" value="1">
+        </td>"""
+        }
+
+        out << """
   </tr>
   {% } %}
 </script>
