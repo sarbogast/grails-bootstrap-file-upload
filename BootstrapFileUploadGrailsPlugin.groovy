@@ -20,7 +20,10 @@ class BootstrapFileUploadGrailsPlugin {
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
     // the other plugins this plugin depends on
-    def dependsOn = [:]
+    def dependsOn = [
+            'twitter-bootstrap':'2.0.2.25 > *',
+            'jquery-ui':'1.8.15 > *'
+    ]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
             "grails-app/views/error.gsp",
@@ -38,7 +41,7 @@ Grails Plugin to integrate Sebastian Tschan's Jquery File Upload (https://github
 '''
 
     // URL to the plugin's documentation
-    def documentation = "http://grails.org/plugin/bootstrap-file-upload"
+    def documentation = "https://github.com/sarbogast/grails-bootstrap-file-upload/blob/master/README.md"
 
     // Extra (optional) plugin metadata
 
