@@ -20,7 +20,7 @@ modules = {
     }
 
     'bootstrap-file-upload' {
-        dependsOn 'jquery-ui', 'blueimp-templates', 'blueimp-load-image', 'blueimp-canvas-to-blob'
+        dependsOn 'jquery-ui', 'blueimp-templates', 'blueimp-canvas-to-blob', 'bootstrap-image-gallery'
 
         resource url: '/css/jquery.fileupload-ui.css'
 
