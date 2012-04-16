@@ -25,11 +25,14 @@ class BootstrapFileUploadTagLib {
         def resizeMaxHeight = attrs.resizeMaxHeight ?: 1200
         def params = attrs.params ?: [:]
         def allowDelete
-        if (!attrs.allowDelete){
+
+        if (attrs.allowDelete == null || attrs.allowDelete == ''){
             allowDelete = true
         } else {
-            allowDelete = (attrs.allowDelete == true)
+            allowDelete = attrs.allowDelete
         }
+
+        //println("allow delete? " + attrs.allowDelete + "/" + allowDelete)
 
         out << """
         <form id="${id}" action="${createLink(controller: attrs.controller, action: attrs.action)}" method="POST" enctype="multipart/form-data">"""
