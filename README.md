@@ -129,7 +129,7 @@ class ImageController {
         picFile.delete()
         File thumbnailFile = new File("${grailsApplication.config.file.upload.directory?:'/tmp'}/${pic.thumbnailFilename}")
         thumbnailFile.delete()
-        wall.removeFromPictures(pic)
+        pic.delete()
 
         def result = [success: true]
         render result as JSON
