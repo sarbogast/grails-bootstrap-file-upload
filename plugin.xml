@@ -1,0 +1,37 @@
+<plugin name='bootstrap-file-upload' version='1.0' grailsVersion='2.0 &gt; *'>
+  <author>Sebastien Arbogast</author>
+  <authorEmail>sebastien.arbogast@epseelon.com</authorEmail>
+  <title>Bootstrap File Upload Plugin</title>
+  <description>Grails Plugin to integrate Sebastian Tschan's Jquery File Upload (https://github.com/blueimp/jQuery-File-Upload).
+</description>
+  <documentation>https://github.com/sarbogast/grails-bootstrap-file-upload/blob/master/README.md</documentation>
+  <type>BootstrapFileUploadGrailsPlugin</type>
+  <resources>
+    <resource>BootstrapFileUploadResources</resource>
+    <resource>org.grails.plugins.bootstrap.file.upload.ImageController</resource>
+    <resource>org.grails.plugins.bootstrap.file.upload.BootstrapFileUploadTagLib</resource>
+  </resources>
+  <repositories>
+    <repository name='grailsCentral' url='http://plugins.grails.org' />
+    <repository name='http://repo.grails.org/grails/plugins' url='http://repo.grails.org/grails/plugins/' />
+    <repository name='http://repo.grails.org/grails/core' url='http://repo.grails.org/grails/core/' />
+    <repository name='grailsCore' url='http://svn.codehaus.org/grails/trunk/grails-plugins' />
+    <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
+  </repositories>
+  <dependencies />
+  <plugins>
+    <compile>
+      <plugin group='org.grails.plugins' name='jquery-ui' version='1.8.15' />
+      <plugin group='org.grails.plugins' name='twitter-bootstrap' version='2.0.2.25' />
+    </compile>
+    <runtime>
+      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
+      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
+    </runtime>
+  </plugins>
+  <runtimePluginRequirements>
+    <plugin name='twitter-bootstrap' version='2.0.2.25 &gt; *' />
+    <plugin name='jquery-ui' version='1.8.15 &gt; *' />
+  </runtimePluginRequirements>
+  <behavior />
+</plugin>
