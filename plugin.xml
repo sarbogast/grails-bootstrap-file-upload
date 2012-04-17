@@ -1,4 +1,4 @@
-<plugin name='bootstrap-file-upload' version='1.0' grailsVersion='2.0 &gt; *'>
+<plugin name='bootstrap-file-upload' version='1.0.2' grailsVersion='2.0 &gt; *'>
   <author>Sebastien Arbogast</author>
   <authorEmail>sebastien.arbogast@epseelon.com</authorEmail>
   <title>Bootstrap File Upload Plugin</title>
@@ -19,16 +19,7 @@
     <repository name='mavenCentral' url='http://repo1.maven.org/maven2/' />
   </repositories>
   <dependencies />
-  <plugins>
-    <compile>
-      <plugin group='org.grails.plugins' name='jquery-ui' version='1.8.15' />
-      <plugin group='org.grails.plugins' name='twitter-bootstrap' version='2.0.2.25' />
-    </compile>
-    <runtime>
-      <plugin group='org.grails.plugins' name='resources' version='1.1.6' />
-      <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />
-    </runtime>
-  </plugins>
+  <plugins />
   <runtimePluginRequirements>
     <plugin name='twitter-bootstrap' version='2.0.2.25 &gt; *' />
     <plugin name='jquery-ui' version='1.8.15 &gt; *' />
