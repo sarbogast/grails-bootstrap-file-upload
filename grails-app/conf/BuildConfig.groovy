@@ -32,7 +32,9 @@ grails.project.dependency.resolution = {
 
     plugins {
         build(":release:2.0.0",
-              ":rest-client-builder:1.0.2") {
+              ":rest-client-builder:1.0.2",
+              ":twitter-bootstrap:2.0.2.25",
+              ":jquery-ui:1.8.15") {
             export = false
         }
     }
