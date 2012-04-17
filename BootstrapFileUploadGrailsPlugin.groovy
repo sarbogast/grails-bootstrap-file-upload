@@ -16,13 +16,13 @@
 
 class BootstrapFileUploadGrailsPlugin {
     // the plugin version
-    def version = "1.0.2"
+    def version = "1.0.3"
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "2.0 > *"
     // the other plugins this plugin depends on
     def dependsOn = [
-            'twitter-bootstrap':'2.0.2.25 > *',
-            'jquery-ui':'1.8.15 > *'
+            'twitter-bootstrap':'2.0.2.25',
+            'jquery-ui':'1.8.15'
     ]
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
