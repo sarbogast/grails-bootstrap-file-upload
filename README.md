@@ -145,3 +145,13 @@ For more information about browser support, see [https://github.com/blueimp/jQue
 
 Note that jquery-file-upload supports cross-domain loading but it has been disabled for now in the grails plugin,
 which shouldn't be a problem.
+
+Customize rendering
+===================
+
+Since version 1.1.0, you can now customize how the list of files is rendered by overriding a few templates. Default templates
+can be found in /views/bootstrapFileUpload directory inside the plugin. Simply copy the relevant template(s) to /view/bootstrapFileUpload
+in your application to override. If the taglib can find a plugin in your application, it will take precedence over the one in the plugin.
+
+Note that /view/_upload.gsp and /view/_download.gsp are javascript templates. For more information about the syntax of those
+templates, have a look at the documentation [https://github.com/blueimp/JavaScript-Templates/blob/master/README.md](here).
