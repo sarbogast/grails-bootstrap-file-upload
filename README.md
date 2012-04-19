@@ -29,6 +29,7 @@ Then, add the following tag to your page: `<bsfu:fileUpload action="upload" cont
 * resizeMaxHeight: maximum height images will be resized to in supporting browsers (optional, defaults to 1200)
 * params: map containing parameters that will be sent to the controller on upload (optional, defaults to [:])
 * allowDelete: boolean indicating whether delete is allowed (optional, defaults to true)
+* buttonBarClass: CSS class to be applied to the button bar and general progress bar (optional, defaults to span9)
 
 File handling
 =============

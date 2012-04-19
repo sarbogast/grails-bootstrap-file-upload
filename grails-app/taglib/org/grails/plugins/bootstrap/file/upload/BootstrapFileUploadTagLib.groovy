@@ -18,6 +18,7 @@ class BootstrapFileUploadTagLib {
      * @attr resizeMaxHeight maximum height images will be resized to in supporting browsers (defaults to 1200)
      * @attr params map containing parameters that will be sent to the controller on upload (defaults to [:])
      * @attr allowDelete boolean indicating whether delete is allowed (defaults to true)
+     * @attr buttonBarClass CSS class to be applied to the button bar and general progress bar (defaults to span9)
      */
     def fileUpload = { attrs, body ->
         def id = attrs.id ?: 'fileupload'
@@ -26,6 +27,7 @@ class BootstrapFileUploadTagLib {
         def resizeMaxWidth = attrs.resizeMaxWidth ?: 1920
         def resizeMaxHeight = attrs.resizeMaxHeight ?: 1200
         def params = attrs.params ?: [:]
+        def buttonBarClass = attrs.buttonBarClass ?: 'span9'
         def allowDelete
 
         if (attrs.allowDelete == null || attrs.allowDelete == ''){
@@ -46,7 +48,7 @@ class BootstrapFileUploadTagLib {
         out << """
             <!-- The fileupload-buttonbar contains buttons to add/delete files and start/cancel the upload -->
             <div class="row fileupload-buttonbar">
-            <div class="span7">
+            <div class="${buttonBarClass}">
             <!-- The fileinput-button span is used to style the file input field as button -->
             <span class="btn btn-success fileinput-button">
             <i class="icon-plus icon-white"></i>
@@ -75,7 +77,7 @@ class BootstrapFileUploadTagLib {
         out << """
             <input id="${id}-toggle" type="checkbox" class="toggle">&nbsp;<label style="display:inline" for="${id}-toggle">${message(code: 'fileupload.select.all', default: 'Select all')}</label>
             </div>
-            <div class="span2">
+            <div class="${buttonBarClass}">
                 <!-- The global progress bar -->
                 <div class="progress progress-success progress-striped active fade">
                   <div class="bar" style="width:0%;"></div>
