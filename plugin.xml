@@ -1,4 +1,4 @@
-<plugin name='bootstrap-file-upload' version='1.1.1' grailsVersion='2.0 &gt; *'>
+<plugin name='bootstrap-file-upload' version='1.1.3' grailsVersion='2.0 &gt; *'>
   <author>Sebastien Arbogast</author>
   <authorEmail>sebastien.arbogast@epseelon.com</authorEmail>
   <title>Bootstrap File Upload Plugin</title>
@@ -21,8 +21,8 @@
   <dependencies />
   <plugins>
     <compile>
-      <plugin group='org.grails.plugins' name='twitter-bootstrap' version='2.0.2.25' />
       <plugin group='org.grails.plugins' name='jquery-ui' version='1.8.15' />
+      <plugin group='org.grails.plugins' name='twitter-bootstrap' version='2.0.2.25' />
     </compile>
     <runtime>
       <plugin group='org.grails.plugins' name='jquery' version='1.7.1' />

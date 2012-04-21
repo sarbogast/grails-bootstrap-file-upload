@@ -29,7 +29,8 @@ Then, add the following tag to your page: `<bsfu:fileUpload action="upload" cont
 * resizeMaxHeight: maximum height images will be resized to in supporting browsers (optional, defaults to 1200)
 * params: map containing parameters that will be sent to the controller on upload (optional, defaults to [:])
 * allowDelete: boolean indicating whether delete is allowed (optional, defaults to true)
-* buttonBarClass: CSS class to be applied to the button bar and general progress bar (optional, defaults to span9)
+* buttonBarClass (since version 1.1.1): CSS class to be applied to the button bar and general progress bar (optional, defaults to span9)
+* dropZone (since version 1.1.2): ID of the element that will serve as a drop zone, in browsers that support drag and drop (optional, defaults to null)
 
 File handling
 =============
@@ -156,3 +157,5 @@ in your application to override. If the taglib can find a plugin in your applica
 
 Note that /view/_upload.gsp and /view/_download.gsp are javascript templates. For more information about the syntax of those
 templates, have a look at the documentation [https://github.com/blueimp/JavaScript-Templates/blob/master/README.md](here).
+
+Note: since version 1.1.2, when you add files, they are added to the beginning of the list, not to the end, which is more natural.

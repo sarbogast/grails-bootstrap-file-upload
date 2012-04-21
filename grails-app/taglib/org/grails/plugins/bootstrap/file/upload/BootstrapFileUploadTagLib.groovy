@@ -19,6 +19,7 @@ class BootstrapFileUploadTagLib {
      * @attr params map containing parameters that will be sent to the controller on upload (defaults to [:])
      * @attr allowDelete boolean indicating whether delete is allowed (defaults to true)
      * @attr buttonBarClass CSS class to be applied to the button bar and general progress bar (defaults to span9)
+     * @attr dropZone ID of the element that serves as a drop zone in browsers that support drag and drop (defaults to null)
      */
     def fileUpload = { attrs, body ->
         def id = attrs.id ?: 'fileupload'
@@ -28,6 +29,7 @@ class BootstrapFileUploadTagLib {
         def resizeMaxHeight = attrs.resizeMaxHeight ?: 1200
         def params = attrs.params ?: [:]
         def buttonBarClass = attrs.buttonBarClass ?: 'span9'
+        def dropZone = attrs.dropZone ?: null
         def allowDelete
 
         if (attrs.allowDelete == null || attrs.allowDelete == ''){
@@ -79,7 +81,7 @@ class BootstrapFileUploadTagLib {
             </div>
             <div class="${buttonBarClass}">
                 <!-- The global progress bar -->
-                <div class="progress progress-success progress-striped active fade">
+                <div class="progress progress-success progress-striped active fade" style="margin-bottom:-6px; margin-top:6px;">
                   <div class="bar" style="width:0%;"></div>
                 </div>
             </div>
@@ -100,9 +102,15 @@ class BootstrapFileUploadTagLib {
 
         out << r.script(null) {
             out << """
-                \$(function(){
-                    \$('#${id}').fileupload();
-
+                \$(function(){"""
+            if (dropZone){
+                out << """
+                    \$('#${id}').fileupload({dropZone:\$('#${dropZone}')"""
+            } else {
+                out << """
+                    \$('#${id}').fileupload();"""
+            }
+            out << """
                     \$('#${id}').fileupload('option', {
                         url: '${createLink(controller: attrs.controller, action: attrs.action)}',
                         maxFileSize: ${maxFileSize},

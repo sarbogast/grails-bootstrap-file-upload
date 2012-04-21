@@ -86,7 +86,7 @@
                     data.isAdjusted = true;
                     data.files.valid = data.isValidated = that._validate(files);
                     data.context = that._renderUpload(files)
-                        .appendTo(options.filesContainer)
+                        .prependTo(options.filesContainer)
                         .data('data', data);
                     that._renderPreviews(files, data.context);
                     that._forceReflow(data.context);
@@ -158,7 +158,7 @@
                     });
                 } else {
                     template = that._renderDownload(data.result)
-                        .appendTo(that.options.filesContainer);
+                        .prependTo(that.options.filesContainer);
                     that._forceReflow(template);
                     that._transition(template).done(
                         function () {
@@ -205,7 +205,7 @@
                 } else if (data.errorThrown !== 'abort') {
                     that._adjustMaxNumberOfFiles(-data.files.length);
                     data.context = that._renderUpload(data.files)
-                        .appendTo(that.options.filesContainer)
+                        .prependTo(that.options.filesContainer)
                         .data('data', data);
                     that._forceReflow(data.context);
                     that._transition(data.context).done(
