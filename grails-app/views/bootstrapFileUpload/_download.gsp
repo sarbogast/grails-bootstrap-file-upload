@@ -47,7 +47,6 @@
   <td colspan="2"></td>
   {% } %}
 
-  <g:if test="${allowDelete}">
   <td class="delete">
     <button class="btn btn-danger" data-type="{%=file.delete_type%}" data-url="{%=file.delete_url%}">
       <i class="icon-trash icon-white"></i>
@@ -55,6 +54,5 @@
     </button>
     <input type="checkbox" name="delete" value="1">
   </td>"""
-  </g:if>
 </tr>
 {% } %}
