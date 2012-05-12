@@ -1,7 +1,7 @@
 Description
 ===========
 This plugin integrates the excellent Sebastian Tschan's jquery-file-upload (https://github.com/blueimp/jQuery-File-Upload)
-into grails 2.0. To view a nice demo of Sebastian's work, [http://blueimp.github.com/jQuery-File-Upload/](click here).
+into grails 2.0. To view a nice demo of Sebastian's work, [click here](http://blueimp.github.com/jQuery-File-Upload/).
 
 It integrates nicely with Twitter Bootstrap and is completely internationalizable.
 
