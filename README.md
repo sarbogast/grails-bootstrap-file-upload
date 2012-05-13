@@ -1,7 +1,7 @@
 Description
 ===========
 This plugin integrates the excellent Sebastian Tschan's jquery-file-upload (https://github.com/blueimp/jQuery-File-Upload)
-into grails 2.0. To view a nice demo of Sebastian's work, [http://blueimp.github.com/jQuery-File-Upload/](click here).
+into grails 2.0. To view a nice demo of Sebastian's work, [click here](http://blueimp.github.com/jQuery-File-Upload/).
 
 It integrates nicely with Twitter Bootstrap and is completely internationalizable.
 
@@ -20,7 +20,11 @@ This will import all of the CSS and Javascript resources needed by this plugin.
 
 Then, add the following tag to your page: `<bsfu:fileUpload action="upload" controller="image"/>`
 
-`controller` and `action` are the only 2 required attributes. Other attributes include:
+Last but not least, if you want to activate the image gallery part, you have to add the following tag, right before the
+end of your body: `<bsfu:imageGallery/>`. Thanks to this tag, when you click on an image, it will appear in a modal dialog
+thanks to which you can navigate through images.
+
+In the `bsfu:fileUpload` tag, `controller` and `action` are the only 2 required attributes. Other attributes include:
 
 * id: the id of the form (defaults to fileupload)
 * controller: REQUIRED the controller to send files to
