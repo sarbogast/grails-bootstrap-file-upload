@@ -58,6 +58,7 @@ Then, add the following tag to your page: `<bsfu:fileUpload action="upload" cont
 * prependFiles: By default, files are appended to the files container. Set this option to true, to prepend files instead. Defaults to false.
 * uploadTemplateId: The ID of the upload template, given as parameter to the tmpl() method to set the uploadTemplate option. Defaults to 'template-upload'.
 * downloadTemplateId: The ID of the download template, given as parameter to the tmpl() method to set the downloadTemplate option. Defaults to 'template-upload'.
+* loadImages Boolean to indicate whether images should be loaded when the page is first loaded or not. Setting this option to false allows you to control when and how this loading happens. Defaults to true.
 
 Note that starting with version 2.0.0 of the plugin, the list of attributes for the taglib matches jquery file upload options
 as close as possible. allowDelete and buttonBarClass have been removed. dropZone is now a jQuery selector and params has been renamed as

@@ -1,5 +1,9 @@
 package org.grails.plugins.bootstrap.file.upload
 
+import org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException
+import org.springframework.http.HttpMethod
+import javax.naming.directory.InvalidAttributeValueException
+
 class BootstrapFileUploadTagLib {
 
     static namespace = "bsfu"
@@ -81,6 +85,8 @@ class BootstrapFileUploadTagLib {
      * Defaults to 'template-upload'.
      * @attr downloadTemplateId The ID of the download template, given as parameter to the tmpl() method to set the downloadTemplate option.
      * Defaults to 'template-upload'
+     * @attr loadImages Boolean to indicate whether images should be loaded when the page is first loaded or not. Setting this option to false
+     * allows you to control when and how this loading happens. Defaults to true.
      */
     def fileUpload = { attrs, body ->
         String id = attrs.id ?: 'fileupload'
@@ -128,6 +134,7 @@ class BootstrapFileUploadTagLib {
         boolean prependFiles = attrs.prependFiles == 'true' || attrs.prependFiles == true ?: false
         String uploadTemplateId = attrs.uploadTemplateId ?: 'template-upload'
         String downloadTemplateId = attrs.downloadTemplateId ?: 'template-download'
+        boolean loadImages = attrs.loadImages == '' || attrs.loadImages == 'true' || attrs.loadImages == true || attrs.loadImages == null
 
         if(!singleFileUploads && !multipart){
             throw new InvalidAttributeValueException("Uploading multiple files with one request requires the multipart option to be set to true (the default).")
@@ -198,8 +205,10 @@ class BootstrapFileUploadTagLib {
                         prependFiles: ${prependFiles},
                         uploadTemplateId: '${uploadTemplateId}',
                         downloadTemplateId: '${downloadTemplateId}'
-                    });
+                    });"""
 
+            if(loadImages){
+                out << """
                     \$('#${id}').each(function () {
                         var that = this;
                         \$.getJSON(this.action, ${formData ? '{' + formData.collect{k,v->k+':'+v}.join(',') + '}' : '{}'}, function (result) {
@@ -207,7 +216,9 @@ class BootstrapFileUploadTagLib {
                                 \$(that).fileupload('option', 'done').call(that, null, {result: result});
                             }
                         });
-                    });
+                    });"""
+            }
+            out << """
                  });
             """
         }
@@ -247,7 +258,3 @@ class BootstrapFileUploadTagLib {
     }
 
 }
-
-import org.codehaus.groovy.grails.web.taglib.exceptions.GrailsTagException
-import org.springframework.http.HttpMethod
-import javax.naming.directory.InvalidAttributeValueException
