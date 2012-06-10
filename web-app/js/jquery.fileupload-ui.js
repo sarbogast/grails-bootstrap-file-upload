@@ -151,7 +151,7 @@
                             function () {
                                 var node = $(this);
                                 template = that._renderDownload([file])
-                                    .css('height', node.height())
+                                    //.css('height', node.height())
                                     .replaceAll(node);
                                 that._forceReflow(template);
                                 that._transition(template).done(
