@@ -179,7 +179,7 @@ class ImageController {
 Browser support
 ===============
 
-For more information about browser support, see [https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support](here).
+For more information about browser support, see [here](https://github.com/blueimp/jQuery-File-Upload/wiki/Browser-support).
 
 Note that jquery-file-upload supports cross-domain loading but it has been disabled for now in the grails plugin,
 which shouldn't be a problem.
@@ -192,7 +192,7 @@ can be found in /views/bootstrapFileUpload directory inside the plugin. Simply c
 in your application to override. If the taglib can find a plugin in your application, it will take precedence over the one in the plugin.
 
 Note that /view/_upload.gsp and /view/_download.gsp are javascript templates. For more information about the syntax of those
-templates, have a look at the documentation [https://github.com/blueimp/JavaScript-Templates/blob/master/README.md](here).
+templates, have a look at the documentation [here](https://github.com/blueimp/JavaScript-Templates/blob/master/README.md).
 
 Note: since version 1.1.2, when you add files, they are added to the beginning of the list, not to the end, which is more natural.
 
