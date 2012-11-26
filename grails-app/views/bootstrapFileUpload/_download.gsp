@@ -53,6 +53,6 @@
       <span>${message(code:'fileupload.destroy')}</span>
     </button>
     <input type="checkbox" name="delete" value="1">
-  </td>"""
+  </td>
 </tr>
 {% } %}
