@@ -1,4 +1,16 @@
-.settings
+.DS_Store
+*/web-app/WEB-INF
+*.iml
+*.log
+.groovy
+.idea
+plugin.xml
+*/.classpath
+*/.settings
+*/.project
+/nbproject/private/
+devDb.*
+cobertura.ser
 target
 .classpath
 .project
