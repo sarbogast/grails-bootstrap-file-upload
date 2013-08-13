@@ -37,9 +37,11 @@ grails.project.dependency.resolution = {
             export = false
         }
 
-        runtime ":resources:1.1.6"
-        runtime ":jquery:1.7.1"
-        compile ":twitter-bootstrap:2.0.2.25"
-        compile ":jquery-ui:1.8.15"
+        runtime(":resources:1.1.6", ":jquery:1.7.1" ){
+            export = false
+        }
+        compile(":twitter-bootstrap:2.0.2.25", ":jquery-ui:1.8.15") {
+            export = false
+        }
     }
 }
