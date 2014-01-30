@@ -92,6 +92,8 @@ class BootstrapFileUploadTagLib {
         String id = attrs.id ?: 'fileupload'
         String url = createLink(controller: attrs.controller, action: attrs.action)
 
+		String autoBind = attrs.autoBind ?: "y"
+
         HttpMethod type = attrs.type ? HttpMethod.valueOf(attrs.type) : HttpMethod.POST
         String dataType = attrs.dataType ?: 'json'
         String namespace = attrs.namespace ?: id
@@ -166,7 +168,7 @@ class BootstrapFileUploadTagLib {
 
         out << r.script(null) {
             out << """
-                \$(function(){
+			function bindFileUpload() { 
                     \$('#${id}').fileupload({
                         url: '${url}',
                         ${type ? "type: '${type}'," : ""}
@@ -219,9 +221,13 @@ class BootstrapFileUploadTagLib {
                     });"""
             }
             out << """
-                 });
+                 };
             """
         }
+
+		if(autoBind=='y') {
+			out << "\nbindFileUpload();\n"
+		}
 
         out << """
 <!-- The template to display files available for upload -->
