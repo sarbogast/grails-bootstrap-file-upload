@@ -37,7 +37,8 @@
   <div class="fileupload-loading"></div>
   <br>
 
-  ${list}
-
+  <g:applyCodec encodeAs="none">
+    ${list}
+  </g:applyCodec>
 </form>
 
