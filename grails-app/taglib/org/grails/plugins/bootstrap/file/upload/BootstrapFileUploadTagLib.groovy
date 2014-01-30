@@ -92,7 +92,7 @@ class BootstrapFileUploadTagLib {
         String id = attrs.id ?: 'fileupload'
         String url = createLink(controller: attrs.controller, action: attrs.action)
 
-		String autoBind = attrs.autoBind ?: "n"
+		String autoBind = attrs.autoBind ?: "y"
 
         HttpMethod type = attrs.type ? HttpMethod.valueOf(attrs.type) : HttpMethod.POST
         String dataType = attrs.dataType ?: 'json'
